@@ -1,7 +1,9 @@
 <h1 align="center">Hello there 👋, I'm Franco Paganoni</h1>
 <h3 align="center">A passionate frontend developer in Belgium</h3>
 
-- 🔭 I’m currently working on [E-commerce](https://github.com/Fpaganoni/E-commerce)
+- 🔭 I’m working on this [e-commerce](https://github.com/Fpaganoni/Tattoo-website)
+
+- 🌱 I’m learning here **typescript, express.js, typeorm, node, nodemon, tanstack/react-query, react.js, react-dom, react-hook-form, react-hot-toast, react-icons, tailwind, next.js.**
 
 - 👨‍💻 All of my projects are available at [https://github.com/Fpaganoni](https://github.com/Fpaganoni)
 
