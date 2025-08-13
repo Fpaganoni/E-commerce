@@ -22,6 +22,7 @@ const seed = async () => {
     await AppDataSource.destroy();
     process.exit(0);
   } catch (error) {
+    console.log("se produjo un error", error);
     process.exit(1);
   }
 };
