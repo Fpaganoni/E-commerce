@@ -51,7 +51,7 @@ const Footer = () => {
             />
             <button
               type="button"
-              className="p-3 bg-[var(--buttons)] text-gray-50 w-[25%] rounded-md cursor-pointer"
+              className="py-3 px-1 md:p-3 bg-[var(--buttons)] text-gray-50 w-[25%] rounded-md cursor-pointer"
             >
               Subscribe
             </button>

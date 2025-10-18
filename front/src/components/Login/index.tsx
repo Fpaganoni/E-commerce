@@ -50,7 +50,7 @@ const Login = () => {
       <h1 className="text-2xl font-bold mb-4 text-slate-900">Login</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-6 rounded shadow-md w-96 relative"
+        className="bg-white p-6 rounded shadow-md w-[90%] md:w-96 relative"
       >
         <Link href={"/"} className="absolute  top-0 right-0 w-[30px] h-[30px]">
           <Image width={30} height={30} src={iconsExit} alt="exit icon" />

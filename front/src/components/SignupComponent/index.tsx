@@ -45,11 +45,11 @@ const SignupComponent = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center my-12 bg-slate-300">
+    <div className="w-[90%] m-0 mx-auto md:w-max flex flex-col items-center justify-center md:my-12 bg-slate-300">
       <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-6 rounded shadow-md w-96 relative"
+        className="bg-white p-6 rounded shadow-md w-[95%] md:w-96 relative"
       >
         <Link href={"/"} className="absolute  top-0 right-0 w-[30px] h-[30px]">
           <Image width={30} height={30} src={iconsExit} alt="exit icon" />
