@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <header className="flex flex-col items-center p-7  bg-slate-300 text-black font-bold">
-      <nav className="w-full flex items-center justify-between px-8 py-4 shadow-sm bg-white">
+      <nav className="w-full flex-col md:flex-row flex items-center justify-between px-8 py-4 shadow-sm bg-white">
         {/* Logo */}
         <div className="text-lg font-semibold tracking-widest">E -COMMERCE</div>
 
