@@ -3,9 +3,9 @@ import "../../app/globals.css";
 const Footer = () => {
   return (
     <footer className="w-full flex flex-col justify-center items-center py-8 bg-slate-300 text-black">
-      <div className="w-full flex items-baseline justify-around gap-9 bg-gray-50 py-10">
-        <div className="flex gap-15">
-          <div>
+      <div className="w-full flex flex-col md:flex-row items-center md:items-baseline md:justify-around gap-9 bg-gray-50 py-10">
+        <div className="w-1/4 flex gap-15 flex-col md:flex-row items-center ">
+          <div className="">
             <h2 className="font-bold tracking-wider text-lg mb-3">Company</h2>
             <ul className="text-sm flex flex-col gap-2">
               <li>Shop Electronic</li>
@@ -14,7 +14,7 @@ const Footer = () => {
               <li>Stores</li>
             </ul>
           </div>
-          <div>
+          <div className="">
             <h2 className="font-bold tracking-wider text-lg mb-3">Follow us</h2>
             <ul className="text-sm flex flex-col gap-2">
               <li>Facebook</li>
@@ -22,7 +22,7 @@ const Footer = () => {
               <li>TikTok</li>
             </ul>
           </div>
-          <div>
+          <div className="">
             <h2 className="font-bold tracking-wider text-lg mb-3">Support</h2>
             <ul className="text-sm flex flex-col gap-2">
               <li>FAQ</li>
@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="w-[500px]">
+        <div className="w-full md:w-[40%]">
           <h1 className="font-bold tracking-wider text-lg mb-3">
             Stay up to date with E-Commerce
           </h1>

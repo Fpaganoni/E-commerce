@@ -1,11 +1,14 @@
 "use client";
 
 // hooks
-import useProducts from "../../hooks/useProducts";
+// import useProducts from "../../hooks/useProducts";
 import { useAuth } from "../../context/AuthContext";
 
 // components
-import Loader from "../Loader/index";
+// import Loader from "../Loader/index";
+
+//helper
+import { productsToPreLoad } from "../../helpers/products";
 
 // types
 interface productDetailProp {
@@ -22,15 +25,15 @@ import Image from "next/image";
 const ProductDetailComponent: FC<productDetailProp> = ({
   id,
 }: productDetailProp) => {
-  const { data: products, isLoading, error } = useProducts();
+  // const { data: products, isLoading, error } = useProducts();
 
   const { isLoggedIn, addToCart } = useAuth();
 
-  if (isLoading) return <Loader />;
+  // if (isLoading) return <Loader />;
 
-  if (error) throw new Error("Error fetching product id");
+  // if (error) throw new Error("Error fetching product id");
 
-  const product = products?.find((p) => String(p.id) === id);
+  const product = productsToPreLoad?.find((p) => String(p.id) === id);
 
   if (!product) return <div>No product to show</div>;
 

@@ -24,7 +24,7 @@ const Card: React.FC<CartItem> = (product: CartItem) => {
   const { isLoggedIn, addToCart } = useAuth();
 
   return (
-    <div className="card bg-white shadow-md rounded-lg overflow-hidden w-72 hover:shadow-lg transition-shadow duration-300">
+    <div className="sm:w-full md:w-72 bg-white shadow-md rounded-lg overflow-hidden sm:mx-6 hover:shadow-lg transition-shadow duration-300">
       {product.image ? (
         <Image
           src={imgUrl}
