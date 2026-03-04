@@ -1,56 +1,88 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc; /* slate-50 */
+  --foreground: #1e293b; /* slate-800 */
 
-  /*COLORS*/
-
-  --black: #171717;
-  --buttons: #266b37;
+  /* Custom App Colors */
+  --buttons: #2563eb; /* blue-600 */
+  --buttons-hover: #1d4ed8; /* blue-700 */
   --error-form: #ef4444;
   --warning: #facc15;
   --info: #0ea5e9;
-
-  /*MAIN COLORS
-  
-🎯 Color principal (acción, botones, links):
-Azul profesional: #2563eb (Tailwind blue-600)
-
-Alternativa elegante: #0f172a (Tailwind slate-900)
-
-🎨 Secundarios (fondos suaves, detalles, hover):
-Gris claro: #f1f5f9 (Tailwind slate-100)
-
-Gris medio: #cbd5e1 (Tailwind slate-300)
-
-Azul claro: #dbeafe (Tailwind blue-100)
-
-
-
-Error: #ef4444 (Tailwind red-500)
-
-Info: #0ea5e9 (Tailwind sky-500)
-
-🖤 Texto y fondo:
-Fondo general: #ffffff o #f9fafb (Tailwind gray-50)
-
-Texto principal: #1e293b (Tailwind slate-800)
-
-Texto secundario: #64748b (Tailwind slate-500)
-  */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a; /* slate-900 */
+    --foreground: #f8fafc; /* slate-50 */
+    --buttons: #3b82f6;
+    --buttons-hover: #60a5fa;
   }
 }
 
 body {
-  background: #cbd5e1;
-  color: #171717;
-  font-family: "Inter", sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", system-ui, sans-serif;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base custom interactive effects */
+.hover-lift {
+  @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer;
+}
+
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.05)];
+  /* Added subtlety to the glassmorphism for a premium look */
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-panel {
+    @apply bg-slate-900/70 border-slate-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
