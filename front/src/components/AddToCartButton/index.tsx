@@ -38,13 +38,13 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
         disabled={alreadyInCart}
         onClick={handleClick}
         type="button"
-        className={`p-1 rounded-md cursor-pointer ${
+        className={`rounded-md transition-all duration-300 cursor-pointer ${
           alreadyInCart
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-[var(--buttons)] text-gray-50"
-        }${className}`}
+            ? "bg-slate-300 text-slate-500 dark:bg-slate-700 dark:text-slate-400 cursor-not-allowed shadow-none"
+            : `bg-blue-600 text-white hover:bg-blue-700 ${className}`
+        }`}
       >
-        {alreadyInCart ? "In cart" : "Add cart"}
+        {alreadyInCart ? "In Cart" : "Add to Cart"}
       </button>
       {showPopup && <PopUpAddCart />}
     </>
