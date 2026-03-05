@@ -7,7 +7,6 @@ import {
   AiOutlineEyeInvisible,
   AiOutlineLoading3Quarters,
 } from "react-icons/ai";
-import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
@@ -15,9 +14,6 @@ import toast from "react-hot-toast";
 
 // types
 import ILoginData from "../../types/IUsers";
-
-// icons
-import iconsExit from "../../../public/iconsExit.png";
 
 // hooks
 import useLogin from "../../hooks/useLogin";

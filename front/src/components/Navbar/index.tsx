@@ -11,7 +11,6 @@ import {
   FaHeart,
   FaShoppingCart,
   FaSignOutAlt,
-  FaUserPlus,
   FaBars,
 } from "react-icons/fa";
 

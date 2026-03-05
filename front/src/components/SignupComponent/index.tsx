@@ -2,7 +2,6 @@
 
 // vedors
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import {
   AiOutlineEye,
@@ -15,9 +14,6 @@ import toast from "react-hot-toast";
 
 // hooks
 import useRegister from "../../hooks/useRegister";
-
-// icons
-import iconsExit from "../../../public/iconsExit.png";
 
 //types
 import IUsers from "../../types/IUsers";
