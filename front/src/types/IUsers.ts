@@ -6,6 +6,15 @@ export default interface IUsers {
   phone: string;
 }
 
+export default interface IRegisterData {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  name: string;
+  address: string;
+  phone: string;
+}
+
 export default interface ILoginData {
   email: string;
   password: string;

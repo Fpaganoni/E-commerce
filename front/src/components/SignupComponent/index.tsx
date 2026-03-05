@@ -16,7 +16,7 @@ import toast from "react-hot-toast";
 import useRegister from "../../hooks/useRegister";
 
 //types
-import IUsers from "../../types/IUsers";
+import IRegisterData from "../../types/IUsers";
 
 const SignupComponent = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -32,11 +32,10 @@ const SignupComponent = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IUsers & { confirmPassword?: string }>();
+  } = useForm<IRegisterData>();
 
-  const onSubmit = (data: IUsers & { confirmPassword?: string }) => {
-    const { confirmPassword, ...userData } = data;
-    mutate(userData, {
+  const onSubmit = (data: IRegisterData) => {
+    mutate(data, {
       onSuccess: () => {
         toast.success("Account created successfully!");
         reset();
