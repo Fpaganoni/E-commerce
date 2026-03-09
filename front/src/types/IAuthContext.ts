@@ -1,5 +1,4 @@
 import IUserObject from "./IUserObject";
-// import IProductOrder from "./IOrders";
 import ICart from "./CartTypes";
 
 type Product = {
@@ -36,7 +35,9 @@ export default interface IAuthContext {
   addToCart: (product: ICart) => void;
   setUser: (user: IUserObject | null) => void;
   clearCart: () => void;
+  removeFromCart: (productId: number) => void;
   cartItems: ICart[];
   isInCart: (productId: number) => boolean;
-  toggleFavorites: (product: Product) => void;
+  toggleFavorites: (product: ICart) => void;
+  favs: ICart[];
 }

@@ -1,6 +1,6 @@
 "use client";
 
-//vedors
+//vendors
 import {
   createContext,
   useContext,
@@ -23,6 +23,13 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const [favs, setFavs] = useState<ICart[]>([]);
 
   useEffect(() => {
+    const storedFavs = localStorage.getItem("Favorites");
+    if (storedFavs) {
+      setFavs(JSON.parse(storedFavs));
+    }
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("Favorites", JSON.stringify(favs));
   }, [favs]);
 
@@ -41,41 +48,32 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Guardar cambios del carrito en localStorage
+  // Save cart changes to localStorage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    const storedToken = localStorage.getItem("token");
-
-    if (storedUser && storedToken) {
-      setUser(JSON.parse(storedUser));
-      setToken(storedToken);
-    }
-  }, []);
-
   const toggleFavorites = (product: ICart) => {
-    if (favs.some((item) => item.id === product.id)) {
-      setFavs((prev) => prev.filter((item) => item.id !== product.id));
-    }
-
-    if (!favs.some((item) => item.id === product.id)) {
-      setFavs((prev) => [...prev, product]);
-    }
+    setFavs((prev) => {
+      const alreadyFav = prev.some((item) => item.id === product.id);
+      return alreadyFav
+        ? prev.filter((item) => item.id !== product.id)
+        : [...prev, product];
+    });
   };
 
   const isInCart = (productId: number): boolean => {
     return cartItems.some((item) => item.id === productId);
   };
 
-  // Agregar producto al carrito
   const addToCart = (product: ICart) => {
     setCartItems((prev) => [...prev, product]);
   };
 
-  // Limpiar carrito después de comprar
+  const removeFromCart = (productId: number) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== productId));
+  };
+
   const clearCart = () => {
     setCartItems([]);
     localStorage.removeItem("cart");
@@ -84,7 +82,6 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const login = (user: IUserObject, token: string) => {
     setUser(user);
     setToken(token);
-
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("token", token);
   };
@@ -92,7 +89,6 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const logout = () => {
     setUser(null);
     setToken(null);
-
     localStorage.removeItem("user");
     localStorage.removeItem("token");
   };
@@ -109,10 +105,12 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
         logout,
         isLoggedIn,
         addToCart,
+        removeFromCart,
         clearCart,
         cartItems,
         isInCart,
         toggleFavorites,
+        favs,
       }}
     >
       {children}
@@ -122,8 +120,6 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-
   if (!context) throw new Error("useAuth must be used within an AuthProvider");
-
   return context;
 };

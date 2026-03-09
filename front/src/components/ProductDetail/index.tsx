@@ -5,7 +5,7 @@
 import { useAuth } from "../../context/AuthContext";
 
 // components
-// import Loader from "../Loader/index";
+// import Loader from "../Loader/index"
 
 //helper
 import { productsToPreLoad } from "../../helpers/products";
@@ -18,17 +18,16 @@ interface productDetailProp {
 // components
 import AddToCartButton from "../AddToCartButton";
 
-// vedors
+// vendors
 import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaHeart } from "react-icons/fa";
 
 const ProductDetailComponent: FC<productDetailProp> = ({
   id,
 }: productDetailProp) => {
-  // const { data: products, isLoading, error } = useProducts();
-
-  const { isLoggedIn, addToCart } = useAuth();
+  const { isLoggedIn, addToCart, toggleFavorites, favs } = useAuth();
 
   // if (isLoading) return <Loader />;
 
@@ -89,11 +88,28 @@ const ProductDetailComponent: FC<productDetailProp> = ({
               </div>
 
               {isLoggedIn ? (
-                <AddToCartButton
-                  product={product}
-                  onAddToCart={addToCart}
-                  className="w-full md:w-auto py-4 px-10 text-lg rounded-xl shadow-lg shadow-blue-500/30 hover:-translate-y-1 transition-all duration-300 font-semibold uppercase tracking-wide"
-                />
+                <div className="flex items-center gap-3">
+                  <AddToCartButton
+                    product={product}
+                    onAddToCart={addToCart}
+                    className="flex-1 py-4 px-10 text-lg rounded-xl shadow-lg shadow-blue-500/30 hover:-translate-y-1 transition-all duration-300 font-semibold uppercase tracking-wide"
+                  />
+                  <button
+                    onClick={() => toggleFavorites(product)}
+                    aria-label={
+                      favs.some((f) => f.id === product.id)
+                        ? "Remove from favorites"
+                        : "Add to favorites"
+                    }
+                    className={`p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer flex-shrink-0 ${
+                      favs.some((f) => f.id === product.id)
+                        ? "bg-rose-500 border-rose-500 text-white shadow-lg shadow-rose-500/30"
+                        : "border-slate-200 dark:border-slate-700 text-slate-400 hover:border-rose-300 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/10"
+                    }`}
+                  >
+                    <FaHeart className="text-xl" />
+                  </button>
+                </div>
               ) : (
                 <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/50 rounded-xl p-5 flex items-start">
                   <span className="text-amber-500 mr-3 text-xl">&#9888;</span>
